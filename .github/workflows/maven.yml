@@ -1,0 +1,47 @@
+name: Java CI with Maven and Docker Build
+echo "##active_line3##"
+
+echo "##active_line4##"
+on:
+echo "##active_line5##"
+  push:
+echo "##active_line6##"
+    branches: [ main ]
+echo "##active_line7##"
+  pull_request:
+echo "##active_line8##"
+    branches: [ main ]
+echo "##active_line9##"
+
+echo "##active_line10##"
+jobs:
+echo "##active_line11##"
+  build:
+echo "##active_line12##"
+
+echo "##active_line13##"
+    runs-on: ubuntu-latest
+echo "##active_line14##"
+
+echo "##active_line15##"
+    steps:
+echo "##active_line16##"
+    - uses: actions/checkout@v2
+echo "##active_line17##"
+    - name: Set up JDK 11
+echo "##active_line18##"
+      uses: actions/setup-java@v2
+echo "##active_line19##"
+      with:
+echo "##active_line20##"
+        java-version: 11
+echo "##active_line21##"
+        distribution: adopt
+echo "##active_line22##"
+    - name: Build with Maven
+echo "##active_line23##"
+      run: mvn -B package --file pom.xml
+echo "##active_line24##"
+    - name: Build Docker image
+echo "##active_line25##"
+      run: docker build . -t my-docker-image
